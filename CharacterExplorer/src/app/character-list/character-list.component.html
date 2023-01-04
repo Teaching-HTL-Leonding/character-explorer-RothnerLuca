@@ -1,0 +1,65 @@
+<h1 class="headline">Character List</h1>
+
+<div class="pink-background">
+  <div class="flex top-bar">
+    <mat-form-field>
+      <mat-label>Character name</mat-label>
+      <input matInput [(ngModel)]="searchText">
+    </mat-form-field>
+    <button style="margin-top: 12px;" mat-stroked-button (click)="searchForCharacter()">
+      <mat-icon>search</mat-icon>
+      Search
+    </button>
+
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="all" [checked]="view === 'all'" (click)="changeView('all')">All</mat-radio-button>
+      <mat-radio-button value="fav" [checked]="view === 'fav'" (click)="changeView('fav')">Favourites</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div [hidden]="displayedPoke !== undefined && displayedPoke.length < 1">
+    <h2>Pokemon</h2>
+    <div class="flex">
+      <div *ngFor="let result of displayedPoke">
+        <mat-card class="clickable item bigger">
+          <mat-card-header [routerLink]="['detailed/poke', result.name]">
+            <img mat-card-avatar [src]="spriteUrlList.get(result.name)" alt="default_sprite">
+            <mat-card-title>
+              {{ result.name | uppercase }}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content [routerLink]="['detailed/poke', result.name]"></mat-card-content>
+          <mat-divider></mat-divider>
+          <mat-card-footer>
+            <mat-icon (click)="toggleFavourites(result.name, 'poke')" *ngIf="!favourites.get(result.name)">favorite_border</mat-icon>
+            <mat-icon class="favIconColor" (click)="toggleFavourites(result.name, 'poke')" *ngIf="favourites.get(result.name)">favorite</mat-icon>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div [hidden]="displayedDisney !== undefined && displayedDisney.length < 1">
+    <h2>Disney</h2>
+    <div class="flex">
+      <div *ngFor="let result of displayedDisney">
+        <mat-card class="clickable item bigger">
+          <mat-card-header [routerLink]="['detailed/disney', result._id]">
+            <img mat-card-avatar [src]="result.imageUrl" alt="default_sprite">
+            <mat-card-title>
+              {{ result.name | uppercase }}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content [routerLink]="['detailed/disney', result._id]"></mat-card-content>
+          <mat-divider></mat-divider>
+          <mat-card-footer>
+            <mat-icon (click)="toggleFavourites(result._id, 'disney')" *ngIf="!favourites.get(result._id)">favorite_border</mat-icon>
+            <mat-icon class="favIconColor" (click)="toggleFavourites(result._id, 'disney')" *ngIf="favourites.get(result._id)">favorite</mat-icon>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+

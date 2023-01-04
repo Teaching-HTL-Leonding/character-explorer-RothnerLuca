@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body {
+  max-width: 79%;
+  margin: 0 auto;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+  font-family: 'Roboto', sans-serif;
+}
+
+.headline {
+  font-size: 2.5em;
+  font-weight: bold;
+
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  background-color: #2F3C7E;
+  color: white;
+}
+
+.pink-background {
+  background-color: #FBEAEB;
+}
+
+.top-bar {
+  margin-left: 20px;
+  padding-top: 20px;
+}
+
+/* abstand 20px überschriften und cards
+*/

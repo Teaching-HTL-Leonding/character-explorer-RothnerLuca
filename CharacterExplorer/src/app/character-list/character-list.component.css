@@ -1,0 +1,38 @@
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.item {
+  margin: 10px;
+  box-shadow: 5px 5px 5px rgb(168, 164, 164);
+  width: 160px;
+}
+
+.bigger {
+  height: 120px;
+  width: 230px;
+}
+
+mat-card-title {
+  justify-content: center;
+}
+
+mat-card-footer {
+  margin-left: 110px;
+  margin-top: 10px;
+}
+
+.favIconColor {
+  color: red;
+}
+
+
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}

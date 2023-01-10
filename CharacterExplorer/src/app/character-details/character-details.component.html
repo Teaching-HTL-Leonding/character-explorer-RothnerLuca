@@ -1,106 +1,109 @@
-<button mat-stroked-button (click)="returnToPreviousRoute()">
-  <mat-icon>arrow_back</mat-icon>
-  Back
-</button>
-<br><br>
+<div class="back-button-background">
+  <button class="back-button" mat-stroked-button (click)="returnToPreviousRoute()">
+    <mat-icon>arrow_back</mat-icon>
+    Back
+  </button>
+</div>
 
 <div [hidden]="!showPokeDetails">
-  <div class="flex">
+  <div class="flex heading">
     <img [src]="pokeDataFromServer?.sprites.front_default" alt="default_sprite">
     <h1>{{ pokeDataFromServer?.name | uppercase }}</h1>
   </div>
 
-  <mat-divider></mat-divider>
-
-  <div>
-    <h2>Info</h2>
-    <h3 class="bold">Types:</h3>
-    <ul>
-      <li class="data_size" *ngFor="let type of pokeDataFromServer?.types">{{ type.type.name }}</li>
-    </ul>
-    <div class="flex">
-      <h3 class="bold">Height:</h3>
-      &nbsp;
-      <p class="data_size"> {{ pokeDataFromServer?.height }}</p>
+  <div class="pink-background details">
+    <div>
+      <h2>Info</h2>
+      <h3 class="bold">Types:</h3>
+      <ul>
+        <li class="data_size" *ngFor="let type of pokeDataFromServer?.types">{{ type.type.name }}</li>
+      </ul>
+      <div class="flex">
+        <h3 class="bold">Height:</h3>
+        &nbsp;
+        <p class="data_size"> {{ pokeDataFromServer?.height }}</p>
+      </div>
+      <div class="flex">
+        <h3 class="bold">Weight:</h3>
+        &nbsp;
+        <p class="data_size"> {{ pokeDataFromServer?.weight }}</p>
+      </div>
     </div>
-    <div class="flex">
-      <h3 class="bold">Weight:</h3>
-      &nbsp;
-      <p class="data_size"> {{ pokeDataFromServer?.weight }}</p>
+
+    <div>
+      <h2>Abilities</h2>
+      <ul>
+        <li class="data_size" *ngFor="let ability of pokeDataFromServer?.abilities">{{ ability.ability.name }}</li>
+      </ul>
     </div>
   </div>
 
-  <div>
-    <h2>Abilities</h2>
-    <ul>
-      <li class="data_size" *ngFor="let ability of pokeDataFromServer?.abilities">{{ ability.ability.name }}</li>
-    </ul>
-  </div>
 </div>
 
 <div [hidden]="showPokeDetails">
-  <div class="flex">
+  <div class="flex heading">
     <img [src]="disneyDataFromServer?.imageUrl" alt="default_sprite">
-    <h1>{{ disneyDataFromServer?.name | uppercase }}</h1>
+    <h1 class="character-name">{{ disneyDataFromServer?.name | uppercase }}</h1>
   </div>
 
-  <br>
-  <mat-divider></mat-divider>
+  <div class="pink-background details">
+    <div>
+      <h2>Appearence</h2>
 
-  <div>
-    <h2>Appearence</h2>
+      <div [hidden]="disneyDataFromServer?.films.length < 1">
+        <h3 class="bold">Films:</h3>
+        <ul>
+          <li class="data_size" *ngFor="let film of disneyDataFromServer?.films">{{ film }}</li>
+        </ul>
+      </div>
 
-    <div [hidden]="disneyDataFromServer?.films.length < 1">
-      <h3 class="bold">Films:</h3>
-      <ul>
-        <li class="data_size" *ngFor="let film of disneyDataFromServer?.films">{{ film }}</li>
-      </ul>
+      <div [hidden]="disneyDataFromServer?.shortFilms.length < 1">
+        <h3 class="bold">Short films:</h3>
+        <ul>
+          <li class="data_size" *ngFor="let film of disneyDataFromServer?.shortFilms">{{ film }}</li>
+        </ul>
+      </div>
+
+      <div [hidden]="disneyDataFromServer?.tvShows.length < 1">
+        <h3 class="bold">TV shows:</h3>
+        <ul>
+          <li class="data_size" *ngFor="let show of disneyDataFromServer?.tvShows">{{ show }}</li>
+        </ul>
+      </div>
+
+      <div [hidden]="disneyDataFromServer?.videoGames.length < 1">
+        <h3 class="bold">Video games:</h3>
+        <ul>
+          <li class="data_size" *ngFor="let game of disneyDataFromServer?.videoGames">{{ game }}</li>
+        </ul>
+      </div>
+
+      <div [hidden]="disneyDataFromServer?.parkAttractions.length < 1">
+        <h3 class="bold">Park attractions:</h3>
+        <ul>
+          <li class="data_size" *ngFor="let attractions of disneyDataFromServer?.parkAttractions">{{ attractions }}</li>
+        </ul>
+      </div>
     </div>
 
-    <div [hidden]="disneyDataFromServer?.shortFilms.length < 1">
-      <h3 class="bold">Short films:</h3>
-      <ul>
-        <li class="data_size" *ngFor="let film of disneyDataFromServer?.shortFilms">{{ film }}</li>
-      </ul>
-    </div>
+    <div [hidden]="disneyDataFromServer?.allies.length < 1 && disneyDataFromServer?.enemies.length < 1">
+      <h2>Other information</h2>
 
-    <div [hidden]="disneyDataFromServer?.tvShows.length < 1">
-      <h3 class="bold">TV shows:</h3>
-      <ul>
-        <li class="data_size" *ngFor="let show of disneyDataFromServer?.tvShows">{{ show }}</li>
-      </ul>
-    </div>
+      <div [hidden]="disneyDataFromServer?.allies.length < 1">
+        <h3 class="bold">Allies:</h3>
+        <ul>
+          <li class="data_size" *ngFor="let allie of disneyDataFromServer?.allies">{{ allie }}</li>
+        </ul>
+      </div>
 
-    <div [hidden]="disneyDataFromServer?.videoGames.length < 1">
-      <h3 class="bold">Video games:</h3>
-      <ul>
-        <li class="data_size" *ngFor="let game of disneyDataFromServer?.videoGames">{{ game }}</li>
-      </ul>
-    </div>
-
-    <div [hidden]="disneyDataFromServer?.parkAttractions.length < 1">
-      <h3 class="bold">Park attractions:</h3>
-      <ul>
-        <li class="data_size" *ngFor="let attractions of disneyDataFromServer?.parkAttractions">{{ attractions }}</li>
-      </ul>
-    </div>
+      <div [hidden]="disneyDataFromServer?.enemies.length < 1">
+        <h3 class="bold">Enemies:</h3>
+        <ul>
+          <li class="data_size" *ngFor="let enemie of disneyDataFromServer?.enemies">{{ enemie }}</li>
+        </ul>
+      </div>
   </div>
 
-  <div [hidden]="disneyDataFromServer?.allies.length < 1 && disneyDataFromServer?.enemies.length < 1">
-    <h2>Other information</h2>
 
-    <div [hidden]="disneyDataFromServer?.allies.length < 1">
-      <h3 class="bold">Allies:</h3>
-      <ul>
-        <li class="data_size" *ngFor="let allie of disneyDataFromServer?.allies">{{ allie }}</li>
-      </ul>
-    </div>
-
-    <div [hidden]="disneyDataFromServer?.enemies.length < 1">
-      <h3 class="bold">Enemies:</h3>
-      <ul>
-        <li class="data_size" *ngFor="let enemie of disneyDataFromServer?.enemies">{{ enemie }}</li>
-      </ul>
-    </div>
 </div>
 

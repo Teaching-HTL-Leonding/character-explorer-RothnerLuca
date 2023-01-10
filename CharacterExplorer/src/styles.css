@@ -23,10 +23,6 @@ body {
   background-color: #FBEAEB;
 }
 
-.top-bar {
-  margin-left: 20px;
-  padding-top: 20px;
+mat-spinner circle {
+  stroke: #3fb53f;
 }
-
-/* abstand 20px überschriften und cards
-*/

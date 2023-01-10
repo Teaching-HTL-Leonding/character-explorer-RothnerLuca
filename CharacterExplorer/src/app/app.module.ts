@@ -17,6 +17,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export const BASE_URL_POKE = new InjectionToken<string>('BASE_URL_POKE');
 export const BASE_URL_DISNEY = new InjectionToken<string>('BASE_URL_DISNEY');
@@ -41,13 +42,14 @@ export const BASE_URL_AIRTABLE = new InjectionToken<string>('BASE_URL_AIRTABLE')
     MatInputModule,
     BrowserAnimationsModule,
     MatRadioModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AirtableAuthInterceptor, multi: true },
     { provide: BASE_URL_POKE, useValue: 'https://pokeapi.co/api/v2/pokemon' },
     { provide: BASE_URL_DISNEY, useValue: 'https://api.disneyapi.dev/characters' },
     { provide: BASE_URL_AIRTABLE, useValue: 'https://api.airtable.com/v0/app9iWaikAF1bUxlt/tblvs5wb3ZFPoy1fw' },
-    { provide: AIRTABLE_PAT, useValue: 'pat3zLtrxaVUfGKoF.530d7cc87d042f7ede935018c65603384aa6725948fee0f555d2b7b890d535bd' },
+    { provide: AIRTABLE_PAT, useValue: 'YOUR-PAT' },
   ],
   bootstrap: [AppComponent]
 })

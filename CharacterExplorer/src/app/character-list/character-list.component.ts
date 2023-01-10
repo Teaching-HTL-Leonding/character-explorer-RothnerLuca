@@ -19,6 +19,7 @@ export class CharacterListComponent implements OnInit {
   favourites;
   dataFromAirtrable?: AirtableRoot;
   view: string;
+  hideSpinner: boolean = true;
 
   constructor(public apiService: ApiLogicService) {
     this.searchText = '';
@@ -31,6 +32,7 @@ export class CharacterListComponent implements OnInit {
     this.searchText = '';
     this.view = 'all';
     this.apiService.loadCharactersFromAirtable().subscribe((data) => {
+      this.hideSpinner = false;
       this.dataFromAirtrable = data;
 
       this.apiService.loadPokeCharacters().subscribe((data) => {
@@ -56,6 +58,7 @@ export class CharacterListComponent implements OnInit {
             }
           }
           this.displayAllCharacters();
+          this.hideSpinner = true;
         });
 
         for (let key of this.spriteUrlList.keys()) {

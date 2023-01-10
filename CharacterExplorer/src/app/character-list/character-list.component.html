@@ -2,23 +2,27 @@
 
 <div class="pink-background">
   <div class="flex top-bar">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Character name</mat-label>
       <input matInput [(ngModel)]="searchText">
     </mat-form-field>
-    <button style="margin-top: 12px;" mat-stroked-button (click)="searchForCharacter()">
+
+    <button class="search-button" mat-stroked-button (click)="searchForCharacter()">
       <mat-icon>search</mat-icon>
       Search
     </button>
 
-    <mat-radio-group aria-label="Select an option">
+    <mat-radio-group class="radio-button-group" aria-label="Select an option">
       <mat-radio-button value="all" [checked]="view === 'all'" (click)="changeView('all')">All</mat-radio-button>
       <mat-radio-button value="fav" [checked]="view === 'fav'" (click)="changeView('fav')">Favourites</mat-radio-button>
     </mat-radio-group>
   </div>
 
   <div [hidden]="displayedPoke !== undefined && displayedPoke.length < 1">
-    <h2>Pokemon</h2>
+    <div class="flex">
+      <h2 class="franchise-heading">Pokemon</h2>
+      <mat-spinner *ngIf="!hideSpinner" class="spinner" diameter="50"></mat-spinner>
+    </div>
     <div class="flex">
       <div *ngFor="let result of displayedPoke">
         <mat-card class="clickable item bigger">
@@ -40,7 +44,11 @@
   </div>
 
   <div [hidden]="displayedDisney !== undefined && displayedDisney.length < 1">
-    <h2>Disney</h2>
+    <div class="flex">
+      <h2 class="franchise-heading">Disney</h2>
+      <mat-spinner *ngIf="!hideSpinner" class="spinner" diameter="50"></mat-spinner>
+    </div>
+
     <div class="flex">
       <div *ngFor="let result of displayedDisney">
         <mat-card class="clickable item bigger">

@@ -10,4 +10,36 @@
   font-size: 19px;
 }
 
+.back-button {
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: white;
+}
 
+.back-button-background {
+  background-color: #2F3C7E;
+}
+
+.heading {
+  margin-left: 20px;
+  margin-top: 20px;
+
+  font-weight: bold;
+
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  background-color: #2F3C7E;
+  color: white;
+}
+
+.details {
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.character-name {
+  margin-left: 20px;
+  font-size: 2.5em;
+}
